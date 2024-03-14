@@ -8,16 +8,18 @@ class Solution {
 public:
   vector<int> smallerNumbersThanCurrent(vector<int> &nums) {
     map<int, int> xdd;
-    map<int, int> xdd2;
+    std::unordered_map<int, int> xdd2;
     for (int i : nums) {
       xdd[i]++;
     }
-    xdd2 = xdd;
     int x = 0;
     vector<int> answer;
-
+    for (auto i : xdd) {
+      xdd2[i.first] += x;
+      x = xdd2[i.first];
+    }
     for (int i : nums) {
-      answer.push_back(xdd[i]);
+      answer.push_back(xdd2[i] - xdd[i]);
     }
     return answer;
   };
