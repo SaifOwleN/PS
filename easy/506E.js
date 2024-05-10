@@ -1,13 +1,16 @@
+// SOLVED
+
 /**
  * @param {number[]} score
  * @return {string[]}
  */
 var findRelativeRanks = function(score) {
-	let answer = score
+	let answer = score.slice()
 
 	score.sort().reverse()
 
 	score.forEach((value, index) => {
+		console.log(answer, score)
 		const xdd = answer.findIndex((aloo) => aloo === value)
 		if (index == 0) {
 			answer[xdd] = "Gold Medal"
